@@ -1,0 +1,27 @@
+{
+  "private": true,
+  "name": "sw-project",
+  "main": "index.js",
+  "type": "module",
+  "workspaces": {
+    "packages": ["backend", "frontend"]
+  },
+  "scripts": {
+    "backend:dev": "yarn workspace backend build:dev",
+    "backend:build": "yarn workspace backend build",
+    "backend:start": "yarn workspace backend start",
+    "frontend:dev": "yarn workspace frontend dev",
+    "frontend:build": "yarn workspace frontend build",
+    "frontend:start": "yarn workspace frontend start",
+    "start": "yarn backend:start",
+    "dev": "concurrently \"yarn backend:dev\" \"yarn frontend:dev\"",
+    "watch": "node index.js",
+    "build": "yarn backend:build && yarn frontend:build",
+    "prod": "yarn build && yarn frontend:start"
+  },
+  "devDependencies": {
+    "chokidar": "^3.5.3",
+    "chalk": "^5.0.1",
+    "tree-kill": "^1.2.2"
+  }
+}
